@@ -4,7 +4,7 @@ variable "name" {
 }
 
 variable "username" {
-  description = "The username for the IAM user (will be auto generated from name)"
+  description = "The username for the IAM user (will be auto generated from name when not provided)"
   type        = string
   default     = null
 }
@@ -23,15 +23,18 @@ variable "ssh_public_key" {
 
 variable "admin" {
   description = "Grant AdministratorAccess to the account"
+  type        = bool
   default     = false
 }
 
 variable "roles" {
-  description = "List of roles that the user will be granted AssumeRole permissions"
+  description = "List of role arns that the user will be granted AssumeRole permissions"
+  type        = list(string)
   default     = []
 }
 
 variable "groups" {
-  description = "List of groups whuch will be attached to the user"
+  description = "List of group names whuch will be attached to the user"
+  type        = list(string)
   default     = []
 }

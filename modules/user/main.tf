@@ -19,7 +19,7 @@ resource "aws_iam_user_ssh_key" "this" {
   public_key = var.ssh_public_key
 }
 
-resource "aws_iam_user_policy_attachment" "AdministratorAccess" {
+resource "aws_iam_user_policy_attachment" "administrator_access" {
   count      = var.admin ? 1 : 0
   user       = aws_iam_user.this.name
   policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
