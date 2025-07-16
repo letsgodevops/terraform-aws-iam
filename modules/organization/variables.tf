@@ -30,3 +30,14 @@ variable "dangerous_close_on_deletion" {
   type        = bool
   default     = false
 }
+
+variable "service_access_principals_enabled" {
+  description = "Enable service access principals for the organization. additional_service_principals can be used to add more service principals."
+  type = object({
+    account = optional(bool, true)
+    sso     = optional(bool, true)
+
+    additional_service_principals = optional(list(string), [])
+  })
+  default = {}
+}

@@ -63,6 +63,7 @@ No requirements.
 | <a name="input_advanced_common_roles"></a> [advanced\_common\_roles](#input\_advanced\_common\_roles) | List of roles that should be present in all accounts | `list(string)` | <pre>[<br/>  "admin",<br/>  "developer",<br/>  "read-only"<br/>]</pre> | no |
 | <a name="input_dangerous_close_on_deletion"></a> [dangerous\_close\_on\_deletion](#input\_dangerous\_close\_on\_deletion) | Close sub-acounts on deletion | `bool` | `false` | no |
 | <a name="input_name"></a> [name](#input\_name) | The alias for the AWS account | `string` | n/a | yes |
+| <a name="input_service_access_principals_enabled"></a> [service\_access\_principals\_enabled](#input\_service\_access\_principals\_enabled) | Enable service access principals for the organization. additional\_service\_principals can be used to add more service principals. | <pre>object({<br/>    account = optional(bool, true)<br/>    sso     = optional(bool, true)<br/><br/>    additional_service_principals = optional(list(string), [])<br/>  })</pre> | `{}` | no |
 | <a name="input_sub_accounts"></a> [sub\_accounts](#input\_sub\_accounts) | A list of sub-accounts to create (name, email) | `map(string)` | `{}` | no |
 
 ## Outputs
