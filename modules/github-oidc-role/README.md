@@ -81,7 +81,7 @@ No modules.
 | <a name="input_max_session_duration"></a> [max\_session\_duration](#input\_max\_session\_duration) | Maximum session duration (in seconds) that you want to set for the specified role | `number` | `3600` | no |
 | <a name="input_policy_arn"></a> [policy\_arn](#input\_policy\_arn) | IAM policy arn for OIDC role | `string` | `null` | no |
 | <a name="input_policy_arns"></a> [policy\_arns](#input\_policy\_arns) | IAM policy arns for OIDC role | `list(string)` | `[]` | no |
-| <a name="input_subject_values"></a> [subject\_values](#input\_subject\_values) | Values for trust relationship conditions. See <https://docs.github.com/en/actions/reference/security/oidc#example-subject-claims> | `list(string)` | n/a | yes |
+| <a name="input_subject_values"></a> [subject\_values](#input\_subject\_values) | Values for trust relationship conditions. See https://docs.github.com/en/actions/reference/security/oidc#example-subject-claims | `list(string)` | n/a | yes |
 
 ## Outputs
 
