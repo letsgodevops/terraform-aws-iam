@@ -1,3 +1,45 @@
+# GitHub OpenID Connect role module
+
+The module to create pre-configured AWS IAM role to work with GitHub Actions.
+
+## Example
+
+```hcl
+module "github_oidc_role" {
+  source = "github.com/letsgodevops/terraform-aws-iam//modules/github-oidc-role?ref=v0.2.0"
+
+  iam_role_name = "github-actions-role"
+
+  ecr_push_policy = {
+    repositories = [
+      aws_ecr_repository.my_repo.arn,
+    ]
+  }
+
+  subject_values = [
+    "repo:letsgodevops/terraform-aws-iam:*",
+  ]
+}
+```
+
+## Subject values
+
+Subject values are delivered to the policy allowing the use of the IAM role. Please tak a look at [OpenID Connect reference](https://docs.github.com/en/actions/reference/security/oidc#example-subject-claims) for more subject value examples. tldr:
+
+```
+# all pull requests
+repo:octo-org/octo-repo:pull_request
+
+# branch specific
+repo:octo-org/octo-repo:ref:refs/heads/demo-branch
+
+# tag specific
+repo:octo-org/octo-repo:ref:refs/tags/demo-tag
+
+# environment
+repo:octo-org/octo-repo:environment:production
+```
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
@@ -39,7 +81,7 @@ No modules.
 | <a name="input_max_session_duration"></a> [max\_session\_duration](#input\_max\_session\_duration) | Maximum session duration (in seconds) that you want to set for the specified role | `number` | `3600` | no |
 | <a name="input_policy_arn"></a> [policy\_arn](#input\_policy\_arn) | IAM policy arn for OIDC role | `string` | `null` | no |
 | <a name="input_policy_arns"></a> [policy\_arns](#input\_policy\_arns) | IAM policy arns for OIDC role | `list(string)` | `[]` | no |
-| <a name="input_subject_values"></a> [subject\_values](#input\_subject\_values) | Values for trust relationship conditions. See https://docs.github.com/en/actions/reference/security/oidc#example-subject-claims | `list(string)` | n/a | yes |
+| <a name="input_subject_values"></a> [subject\_values](#input\_subject\_values) | Values for trust relationship conditions. See <https://docs.github.com/en/actions/reference/security/oidc#example-subject-claims> | `list(string)` | n/a | yes |
 
 ## Outputs
 

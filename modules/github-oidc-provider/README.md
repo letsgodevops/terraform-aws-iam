@@ -1,6 +1,6 @@
 # GitHub OpenID Connect provider module
 
-The module simplifies the configuration of the aws_iam_openid_connect_provider for connecting through GitHub Actions.
+The module simplifies the configuration of the `aws_iam_openid_connect_provider` for connecting through GitHub Actions.
 
 ## Example
 
@@ -8,8 +8,8 @@ The module simplifies the configuration of the aws_iam_openid_connect_provider f
 module "github_oidc_provider" {
   source = "github.com/letsgodevops/terraform-aws-iam//modules/github-oidc-provider?ref=v0.2.0"
 }
-
 ```
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
