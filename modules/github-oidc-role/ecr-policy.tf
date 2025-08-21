@@ -45,6 +45,7 @@ data "aws_iam_policy_document" "github_ecr_push_policy" {
     actions = [
       "ecr:GetAuthorizationToken",
       "ecr-public:GetAuthorizationToken",
+      "sts:GetServiceBearerToken",
     ]
   }
 
