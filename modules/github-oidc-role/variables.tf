@@ -35,9 +35,10 @@ variable "max_session_duration" {
 variable "ecr_push_policy" {
   description = "ECR push policy configuration for GitHub Actions OIDC role"
   type = object({
-    enabled         = optional(bool, true)
-    repository_arns = optional(list(string), ["*"])
-    kms_key_aliases = optional(list(string), ["alias/aws/ecr"])
+    enabled                = optional(bool, true)
+    repository_arns        = optional(list(string), ["*"])
+    public_repository_arns = optional(list(string), [])
+    kms_key_aliases        = optional(list(string), ["alias/aws/ecr"])
   })
   default = {}
 }
