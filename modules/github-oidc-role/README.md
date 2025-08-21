@@ -75,7 +75,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_ecr_push_policy"></a> [ecr\_push\_policy](#input\_ecr\_push\_policy) | ECR push policy configuration for GitHub Actions OIDC role | <pre>object({<br/>    enabled         = optional(bool, true)<br/>    repository_arns = optional(list(string), ["*"])<br/>    kms_key_aliases = optional(list(string), ["alias/aws/ecr"])<br/>  })</pre> | `{}` | no |
+| <a name="input_ecr_push_policy"></a> [ecr\_push\_policy](#input\_ecr\_push\_policy) | ECR push policy configuration for GitHub Actions OIDC role | <pre>object({<br/>    enabled                = optional(bool, true)<br/>    repository_arns        = optional(list(string), ["*"])<br/>    public_repository_arns = optional(list(string), [])<br/>    kms_key_aliases        = optional(list(string), ["alias/aws/ecr"])<br/>  })</pre> | `{}` | no |
 | <a name="input_iam_path"></a> [iam\_path](#input\_iam\_path) | IAM path for OIDC role | `string` | `"/oidc/"` | no |
 | <a name="input_iam_role_name"></a> [iam\_role\_name](#input\_iam\_role\_name) | IAM role name | `string` | n/a | yes |
 | <a name="input_max_session_duration"></a> [max\_session\_duration](#input\_max\_session\_duration) | Maximum session duration (in seconds) that you want to set for the specified role | `number` | `3600` | no |
