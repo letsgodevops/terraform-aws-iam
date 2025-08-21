@@ -17,10 +17,35 @@ data "aws_iam_policy_document" "github_ecr_push_policy" {
     resources = var.ecr_push_policy.repository_arns
   }
 
+  dynamic "statement" {
+    for_each = length(var.ecr_push_policy.public_repository_arns) > 0 ? [1] : []
+
+    content {
+      sid = "AllowECRPublicActions"
+
+      actions = [
+        "ecr-public:BatchCheckLayerAvailability",
+        "ecr-public:DescribeImages",
+        "ecr-public:GetRepositoryPolicy",
+        "ecr-public:PutImage",
+        "ecr-public:InitiateLayerUpload",
+        "ecr-public:UploadLayerPart",
+        "ecr-public:CompleteLayerUpload",
+        "ecr-public:DescribeRepositories",
+      ]
+
+      resources = var.ecr_push_policy.public_repository_arns
+    }
+  }
+
   statement {
     effect    = "Allow"
     resources = ["*"]
-    actions   = ["ecr:GetAuthorizationToken"]
+
+    actions = [
+      "ecr:GetAuthorizationToken",
+      "ecr-public:GetAuthorizationToken",
+    ]
   }
 
   statement {
