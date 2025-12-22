@@ -105,6 +105,35 @@ data "aws_iam_policy_document" "self_manage" {
     resources = ["arn:aws:iam::*:user/users/$${aws:username}"]
     effect    = "Allow"
   }
+
+  statement {
+    sid = "AllowTagOwnUser"
+    actions = [
+      "iam:TagUser",
+      "iam:UntagUser"
+    ]
+    resources = ["arn:aws:iam::*:user/users/$${aws:username}"]
+    effect    = "Allow"
+  }
+
+  statement {
+    sid = "AllowGetOwnMFADevice"
+    actions = [
+      "iam:GetMFADevice"
+    ]
+    resources = ["arn:aws:iam::*:mfa/$${aws:username}"]
+    effect    = "Allow"
+  }
+
+  statement {
+    sid = "AllowGetAccountSummary"
+    actions = [
+      "iam:GetAccountSummary",
+      "iam:ListAccountAliases"
+    ]
+    resources = ["*"]
+    effect    = "Allow"
+  }
 }
 
 resource "aws_iam_policy" "self_manage" {
