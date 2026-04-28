@@ -63,7 +63,7 @@ data "aws_iam_policy_document" "github_ecr_push_policy" {
 
 resource "aws_iam_policy" "github_ecr_push_policy" {
   count       = var.ecr_push_policy.enabled ? 1 : 0
-  name        = "github-ecr-push-policy"
+  name        = var.ecr_push_policy.policy_name != null ? var.ecr_push_policy.policy_name : "${var.iam_role_name}-ecr-push-policy"
   description = "Policy for GitHub Actions to push to ECR"
   policy      = data.aws_iam_policy_document.github_ecr_push_policy.json
 }
