@@ -32,6 +32,16 @@ variable "max_session_duration" {
   default     = 3600
 }
 
+variable "additional_conditions" {
+  description = "Additional conditions for the OIDC trust policy, e.g. job_workflow_ref restrictions"
+  type = list(object({
+    test     = string
+    variable = string
+    values   = list(string)
+  }))
+  default = []
+}
+
 variable "ecr_push_policy" {
   description = "ECR push policy configuration for GitHub Actions OIDC role"
   type = object({
