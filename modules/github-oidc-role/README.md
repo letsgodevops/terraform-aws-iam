@@ -75,6 +75,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_additional_conditions"></a> [additional\_conditions](#input\_additional\_conditions) | Additional conditions for the OIDC trust policy, e.g. job\_workflow\_ref restrictions | <pre>list(object({<br/>    test     = string<br/>    variable = string<br/>    values   = list(string)<br/>  }))</pre> | `[]` | no |
 | <a name="input_ecr_push_policy"></a> [ecr\_push\_policy](#input\_ecr\_push\_policy) | ECR push policy configuration for GitHub Actions OIDC role | <pre>object({<br/>    enabled                = optional(bool, true)<br/>    policy_name            = optional(string, null)<br/>    repository_arns        = optional(list(string), ["*"])<br/>    public_repository_arns = optional(list(string), [])<br/>    kms_key_aliases        = optional(list(string), ["alias/aws/ecr"])<br/>  })</pre> | `{}` | no |
 | <a name="input_iam_path"></a> [iam\_path](#input\_iam\_path) | IAM path for OIDC role | `string` | `"/oidc/"` | no |
 | <a name="input_iam_role_name"></a> [iam\_role\_name](#input\_iam\_role\_name) | IAM role name | `string` | n/a | yes |
